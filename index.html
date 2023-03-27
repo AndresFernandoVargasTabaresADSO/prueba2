@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js" type="module"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>Seleccione la sede</p>
+        <select v-model="selectedSede">
+            <option disabled value="">Selecciona una Sede</option>
+            <option v-for="sede in campus.sedes" :key="sede.name" :value="sede.name">{{ sede.name }}</option>
+        </select>
+        <div v-if="selectedSede">
+            <h2>{{ selectedSede }}</h2>
+            <p>Direccion: {{ getDireccion(selectedSede) }}</p>
+            <p>Telefono: {{ getPhone(selectedSede) }}</p>
+            <p>Email: {{ getEmail(selectedSede) }}</p>
+    
+        </div>
+
+
+
+
+        <!-- <input type="text" v-model="nombre">
+        <button @click="agregarProfe">Agregar</button> -->
+
+
+    <h2>Agregar Profesor:</h2>
+    <form @submit.prevent="agregarProfesor">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" v-model="nombre" />
+      </div>
+      <div>
+        <label for="nombre">Telefonos:</label>
+        <input type="text" id="telefono" v-model="telefono" />
+      </div>
+      <div>
+        <label for="nombre">Teams:</label>
+        <input type="time" id="teams" v-model="teams" />
+        <input type="text" id="dias" v-model="dias" placeholder="Dias" />
+        <input type="text" id="salon" v-model="salon" placeholder="salon" />
+      </div>
+      <button type="submit">Agregar</button>
+    </form>
+    <h2>Lista de Profesores:</h2>
+    <ul>
+      <li v-for="profesor in profesores" :key="profesor.nombre">
+        Nombre: {{ profesor.nombre }} - Telefono: {{ profesor.telefono }} - Hora:{{ profesor.teams }} - Dia: {{ profesor.dias }} - Salon: {{ profesor.salon }}
+      </li>
+    </ul>
+
+
+
+    <h2>Agregar Estudiante:</h2>
+    <form @submit.prevent="agregarEstudiante">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" v-model="nombre" />
+      </div>
+      <div>
+        <label for="nombre">Telefonos:</label>
+        <input type="text" id="telefono" v-model="telefono" />
+      </div>
+      <div>
+        <label for="nombre">Barrio:</label>
+        <input type="text" id="Barrio" v-model="Barrio" />
+      </div>
+      <div>
+        <label for="nombre">Teams:</label>
+        <input type="time" id="teams" v-model="teams" />
+        <input type="text" id="dias" v-model="dias" placeholder="Dias" />
+        <input type="text" id="salon" v-model="salon" placeholder="salon" />
+      </div>
+      <button type="submit">Agregar</button>
+    </form>
+
+    <h2>Lista de Estudiantes:</h2>
+    <ul>
+      <li v-for="estudiante in estudiantes" :key="estudiante.nombre">
+        Nombre: {{ estudiante.nombre }} - Telefono: {{ estudiante.telefono }} - Salon: {{ estudiante.barrio }} - Hora:{{ estudiante.teams }} - Dia: {{ estudiante.dias }} - Salon: {{ estudiante.salon }}
+      </li>
+    </ul>
+
+    </div>
+
+
+</body>
+
+</html>
